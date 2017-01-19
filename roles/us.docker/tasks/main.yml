@@ -27,13 +27,24 @@
   apt_repository:
       repo: 'deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main'
       state: present
+  when: ansible_os_family == "Debian"
 
-# Import the Docker repository key
-- name: Import the Docker repository key
-  apt_key:
-      url: "{{ url_docker_project }}"
+# Add Docker apt repo
+- name: Add docker yum repo
+  yum_repository:
+      repo: 'https://yum.dockerproject.org/repo/main/centos/7/'
       state: present
-      id: "{{ id_docker_repo }}"
+  when: ansible_os_family == "CentOS"
+
+# Import the Docker repository key Debian
+#- name: Import the Docker repository key
+#  apt_key:
+#      url: "{{ url_docker_project_debian }}"
+#      state: present
+#      id: "{{ id_docker_repo }}"
+
+
+#     "{{ url_docker_project_yum }}"
 
 # Install Docker package
 - name: install docker
