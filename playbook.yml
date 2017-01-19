@@ -1,0 +1,4 @@
+---
+
+- hosts: usvm
+  remote_user: us
