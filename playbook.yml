@@ -1,4 +1,12 @@
 ---
 
-- hosts: usvm
+- name: VM Aprovisioning
+  hosts: usvm
   remote_user: us
+
+  roles:
+    - us.apache # Rol de Apache
+    - us.docker # Rol de Docker
+
+  vars_files:
+    - ~/Escritorio/ansible_vm/vars/vm_vars.yml

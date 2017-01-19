@@ -1,0 +1,6 @@
+---
+  web_package: apache2
+  docker_package: docker-engine
+  docker_py_version: 1.1.0
+  url_docker_project: https://apt.dockerproject.org/gpg
+  id_docker_repo: 2C52609D

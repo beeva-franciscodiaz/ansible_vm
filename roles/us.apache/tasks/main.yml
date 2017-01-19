@@ -1,0 +1,7 @@
+---
+# install Apache2
+
+- name: install packages
+  package:
+    name: "{{ web_package }}"
+    state: installed

@@ -1,0 +1,42 @@
+---
+# install Docker
+
+# Install dependencies of Docker
+- name: Install dependencies of Docker
+  apt: 
+    name={{ item }}
+    # update_cache=yes
+  with_items: 
+    - python-dev
+    - python-setuptools
+
+# Install pip
+- name: Install pip
+  easy_install:
+      name: pip
+
+# Install Docker py
+- name: Install docker-py
+  pip: 
+      name=docker-py 
+      state=present
+      version={{ docker_py_version }}
+
+# Add Docker apt repo
+- name: Add docker apt repo
+  apt_repository:
+      repo: 'deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main'
+      state: present
+
+# Import the Docker repository key
+- name: Import the Docker repository key
+  apt_key:
+      url: "{{ url_docker_project }}"
+      state: present
+      id: "{{ id_docker_repo }}"
+
+# Install Docker package
+- name: install docker
+  package:
+    name: "{{ docker_package }}"
+    state: installed
