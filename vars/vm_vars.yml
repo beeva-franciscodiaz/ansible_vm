@@ -3,5 +3,7 @@
   docker_package: docker-engine
   docker_py_version: 1.1.0
   url_docker_project_debian: https://apt.dockerproject.org/gpg
-  url_docker_project_centos: https://yum.dockerproject.org/gpg
+  keyserver_mongo: hkp://keyserver.ubuntu.com:80
+
   id_docker_repo: 2C52609D
+  id_mongo_repo: 7F0CEB10

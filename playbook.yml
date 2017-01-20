@@ -6,7 +6,8 @@
 
   roles:
     - us.apache # Rol de Apache
-    - us.docker # Rol de Docker
+    - us.install_docker # Rol de instalacion Docker
+    - us.install_mongodb # Rol de instalacion de MongoDB
 
   vars_files:
     - ~/Escritorio/ansible_vm/vars/vm_vars.yml
