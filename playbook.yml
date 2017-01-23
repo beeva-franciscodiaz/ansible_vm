@@ -7,7 +7,12 @@
   roles:
     - us.apache # Rol de Apache
     - us.install_docker # Rol de instalacion Docker
-    - us.install_mongodb # Rol de instalacion de MongoDB
+    - us.php # Rol de instalación de PHP
+    - us.mysql # Rol de instalacion y configuracion de MySQL
+    - us.wordpress # Rol de instalacion de Wordpress
+
+
+    # - us.install_mongodb # Rol de instalacion de MongoDB
 
   vars_files:
     - ~/Escritorio/ansible_vm/vars/vm_vars.yml

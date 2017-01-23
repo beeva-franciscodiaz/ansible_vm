@@ -2,7 +2,7 @@
 # install Docker
 
 # Install dependencies of Docker
-- name: Install dependencies of Docker
+- name: Docker | Install dependencies
   apt: 
     name={{ item }}
     # update_cache=yes
@@ -11,30 +11,30 @@
     - python-setuptools
 
 # Install pip
-- name: Install pip
+- name: Docker | Install pip
   easy_install:
       name: pip
 
 # Install Docker py
-- name: Install docker-py
+- name: Docker | Install docker-py
   pip: 
       name=docker-py 
       state=present
       version={{ docker_py_version }}
 
 # Add Docker apt repo
-- name: Add docker apt repo
+- name: Docker | Add docker apt repo
   apt_repository:
       repo: 'deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main'
       state: present
   when: ansible_os_family == "Debian"
 
 # Add Docker apt repo
-- name: Add docker yum repo
-  yum_repository:
-      repo: 'https://yum.dockerproject.org/repo/main/centos/7/'
-      state: present
-  when: ansible_os_family == "CentOS"
+# - name: Docker | Add yum repo
+#  yum_repository:
+#      repo: 'https://yum.dockerproject.org/repo/main/centos/7/'
+#      state: present
+#  when: ansible_os_family == "CentOS"
 
 # Import the Docker repository key Debian
 #- name: Import the Docker repository key
@@ -47,7 +47,13 @@
 #     "{{ url_docker_project_yum }}"
 
 # Install Docker package
-- name: install docker
+- name: Docker | install docker
   package:
     name: "{{ docker_package }}"
     state: installed
+
+#  Start Docker Service
+- name: Docker | start service
+  service:
+    name: docker
+    state: started

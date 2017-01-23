@@ -1,9 +1,27 @@
 ---
+
+# Package names
   web_package: apache2
   docker_package: docker-engine
+  php_package: php
+
+# Package versions
   docker_py_version: 1.1.0
+
+# Package urls
   url_docker_project_debian: https://apt.dockerproject.org/gpg
   keyserver_mongo: hkp://keyserver.ubuntu.com:80
+  url_wordpress: https://wordpress.org/latest.tar.gz
 
+# Package IDs
   id_docker_repo: 2C52609D
   id_mongo_repo: 7F0CEB10
+
+
+  # Wordpress Variables
+  wp_mysql_db: wordpress
+  wp_mysql_user: wordpress
+  wp_mysql_password: misitio2017
+  wordpress_tmp: /tmp/wordpress.tar.gz
+  wordpress_dest: /var/www/
+  wp_php_config_dest: /var/www/wordpress/wp-config.php

@@ -1,0 +1,24 @@
+---
+
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+
+
+- name: MySQL | Install required software
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mysql-server
+    - python-mysqldb
+
+- name: MySQL | Create MySQL Database
+  mysql_db:
+    name: "{{ wp_mysql_db }}"
+    state: present
+
+- name: MySQL | Create MySQL user
+  mysql_user:
+      name={{ wp_mysql_user }} 
+      password={{ wp_mysql_password }}
+      priv=*.*:ALL

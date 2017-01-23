@@ -4,21 +4,22 @@
 # Mongo ppa key
 - name: Add mongo ppa key
   apt_key:
-    keyserver: "{{ keyserver_mongo }}"
+    url: "{{ keyserver_mongo }}"
     id: "{{ id_mongo_repo }}"
     state: present
 
-# Mongo Sources list
-- name: Add mongo sources list
-  lineinfile: # Search the line on mongodb.list
-    line: "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse"
-    dest: /etc/apt/sources.list.d/mongodb.list
+- name: MongoDB -- Install ppa
+  apt_repository:
+    repo: 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' 
     state: present
-    create: yes
 
+# Install Docker package
+- name: install docker
+  package:
+    name: "mongodb-org"
+    state: present
 
-# Install MongoDB package
-#- name: Install MongoDB
-#  apt:
-#    name=mongodb-org
-#    state=latest
+#- name: Ensure MongoDB is running
+#  service:
+#    name: mongod
+#    state: started

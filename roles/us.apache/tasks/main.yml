@@ -1,7 +1,13 @@
 ---
 # install Apache2
 
-- name: install packages
+- name: Apache | install packages
   package:
     name: "{{ web_package }}"
     state: installed
+
+# Restart Apache Service
+- name: Apache | enable service
+  service:
+    name: apache2
+    state: started
